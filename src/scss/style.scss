@@ -4,8 +4,9 @@ $minWidthMed: 800px;
 $minWidthSml: 420px;
 //- //>Base settings
 :root {
-	--color: #fff;
-	--color2: #000;
+	--color: #f4ebda;
+	--colorDark: #ffe9c2;
+	--color2: #c3551b;
 }
 
 *,
@@ -15,13 +16,15 @@ $minWidthSml: 420px;
 }
 
 html {
-	height: 100%;
+	//height: 100%;
+	min-height: 100%;
 }
 
 body {
+	height: 100%;
 	min-height: 100%;
 	margin: 0;
-	background: grey;
+	background: no-repeat linear-gradient(white, var(--color));
 }
 
 a {
@@ -31,19 +34,44 @@ a {
 
 img {
 	max-width: 100%;
+	border-radius: 0.5rem;
 }
 
 ul {
 	list-style: none;
 }
 
+h1 {
+	margin: 0;
+	font-size: 4rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h1,
+h2 {
+	span {
+		color: var(--color2);
+	}
+}
+
+p {
+	max-width: 76ch;
+}
+
 ::placeholder {
-	color: red;
+	color: var(--color);
 }
 
 .wrap {
-	max-width: 1199px;
+	max-width: 960px;
 	margin: 0 auto;
+	&-header {
+		max-width: 1199px;
+		margin: 0 auto;
+	}
 }
 
 .center {
@@ -52,21 +80,123 @@ ul {
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	justify-content: center;
 	align-content: center;
-	align-items: center;
-	text-align: center;
+	&-hero {
+		@extend .grid;
+		//grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: 3fr 1fr 1fr;
+		grid-template-rows: 2fr 1fr 1fr;
+	}
 }
 
 .flex {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
+	align-items: center;
 }
 
-.navMain {
+.img {
+	&-client {
+		border-radius: 999px;
+	}
+}
+
+header {
+	position: relative;
+	z-index: 420;
+	.flex {
+		justify-content: space-between;
+	}
+}
+
+.navMain,
+.navSecondary {
 	li {
 		padding: 1em;
 		display: inline-block;
+	}
+}
+
+.hero {
+	&-content {
+		text-align: left;
+		align-self: end;
+	}
+	&-form {
+		padding: 2rem;
+		grid-column: 1 / span 2;
+		grid-row: 2/3;
+		align-self: center;
+		background: white;
+		z-index: 99;
+		label {
+			display: block;
+		}
+		.input {
+			display: inline-block;
+		}
+	}
+	&-img {
+		min-height: 600px;
+		object-fit: cover;
+		grid-row: 1/4;
+		grid-column: 2/4;
+		justify-self: end;
+		border-radius: 0.25rem 2rem 2rem 2rem;
+		overflow: hidden;
+		z-index: 0;
+	}
+	&-cta {
+		//-align-self: center;
+	}
+}
+
+.hero::before {
+	content: '';
+	width: 70%;
+	height: 75%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--color);
+	border-radius: 0 0 2rem 0;
+	z-index: -1;
+}
+
+main,
+.testimonials {
+	@media (max-width: $minWidthMed) {
+		.flex {
+			flex-wrap: wrap;
+		}
+	}
+}
+
+.counts {
+	width: 50%;
+	min-width: 320px;
+	padding: 1rem;
+	display: grid;
+	//justify-items: right;
+	text-align: center;
+}
+
+.countWorkers,
+.countCustomer {
+	margin: 3rem 0;
+	justify-self: right;
+}
+
+.countTours {
+	margin: 3rem 0;
+	justify-self: left;
+}
+
+.experts {
+	text-align: center;
+	p {
+		margin: 1rem auto;
 	}
 }
