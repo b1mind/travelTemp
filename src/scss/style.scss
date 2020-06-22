@@ -57,6 +57,7 @@ h1 {
 }
 
 h2 {
+	margin: 0.5rem 0;
 	font-size: 2rem;
 	line-height: 1em;
 }
@@ -171,6 +172,7 @@ input[type='date'],
 }
 
 header {
+	padding: 0.5rem;
 	position: relative;
 	z-index: 420;
 	.flex {
@@ -245,8 +247,8 @@ header {
 		display: grid;
 		visibility: visible;
 		position: absolute;
-		top: 0px;
-		right: 10px;
+		top: 25px;
+		right: 20px;
 		li {
 			width: 25px;
 			height: 3px;
@@ -308,7 +310,7 @@ header {
 .hero::before {
 	content: '';
 	width: 70%;
-	height: 75%;
+	height: 80%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -326,6 +328,9 @@ main,
 			flex-wrap: wrap;
 		}
 	}
+}
+section {
+	margin: 3rem 0;
 }
 
 .counts {
