@@ -7,8 +7,9 @@ $minWidthSml: 420px;
 //- //>Base settings
 :root {
 	--color: #f4ebda;
-	--colorDark: #ffe9c2;
+	--colorDark: #dfc497;
 	--color2: #c3551b;
+	--color2Light: #e9996e;
 }
 
 *,
@@ -72,11 +73,7 @@ h2 {
 
 p {
 	max-width: 66ch;
-	line-height: 1.25em;
-}
-
-::placeholder {
-	color: var(--color);
+	line-height: 1.5em;
 }
 
 input,
@@ -90,7 +87,7 @@ select {
 
 label {
 	display: block;
-	color: var(--color2);
+	color: var(--color2Light);
 	font-size: 1rem;
 	font-weight: lighter;
 }
@@ -121,6 +118,10 @@ label {
 		grid-template-columns: 3fr 1fr 1fr;
 		grid-template-rows: auto;
 	}
+	&-explore {
+		display: grid;
+		grid-template-columns: repeat(1fr);
+	}
 }
 
 .flex {
@@ -149,7 +150,7 @@ input[type='date'],
 	}
 	&::before {
 		content: '';
-		width: 35%;
+		width: 2rem;
 		height: 100%;
 		position: absolute;
 		top: 0;
@@ -258,6 +259,17 @@ header {
 }
 
 .hero {
+	&::before {
+		content: '';
+		width: 70%;
+		height: 80%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: var(--color);
+		border-radius: 0 0 2rem 0;
+		z-index: -1;
+	}
 	&-content {
 		text-align: left;
 		align-self: end;
@@ -307,18 +319,6 @@ header {
 	}
 }
 
-.hero::before {
-	content: '';
-	width: 70%;
-	height: 80%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background: var(--color);
-	border-radius: 0 0 2rem 0;
-	z-index: -1;
-}
-
 main,
 .testimonials,
 .choose,
@@ -337,8 +337,19 @@ section {
 	width: 100%;
 	min-width: 320px;
 	padding: 1rem;
+	position: relative;
 	display: grid;
 	text-align: center;
+	&::before {
+		content: '\F0c0';
+		position: absolute;
+		top: 35%;
+		left: 45%;
+		color: var(--color2Light);
+		font-family: 'Font Awesome 5 Free';
+		font-size: 8rem;
+		font-weight: 900;
+	}
 }
 
 .countWorkers,
@@ -352,13 +363,67 @@ section {
 	justify-self: left;
 }
 
-.box {
-	margin: 0 0.5rem;
+.choose {
+	.box {
+		margin: 0 0.5rem;
+	}
+}
+
+.experts {
+	.img {
+		position: relative;
+		&::before {
+			content: '\f144 Watch';
+			position: absolute;
+			top: 20px;
+			right: 100px;
+			color: var(--color2);
+			font-family: 'Font Awesome 5 Free';
+			font-size: 2rem;
+			//font-weight: 900;
+			z-index: 420;
+		}
+	}
 }
 
 .testimonials,
 .experts {
 	p {
 		margin: 1rem auto;
+	}
+}
+
+.testimonials {
+	position: relative;
+	&::after {
+		content: '';
+		width: 80%;
+		height: 120%;
+		position: absolute;
+		bottom: -20px;
+		right: 0;
+		background: linear-gradient(var(--colorDark), var(--color));
+		border-radius: 2rem 0 0 1rem;
+		z-index: -1;
+	}
+}
+
+.explore .img {
+	&:nth-child(3n + 1) {
+		object-fit: cover;
+		grid-column: span 2;
+		grid-row: span 2;
+		border-radius: 0rem 8rem 1rem 8rem;
+	}
+	&:nth-child(2n + 2) {
+		object-fit: cover;
+		grid-column: span 2;
+		grid-row: span 2;
+		border-radius: 4rem 1rem 4rem 1rem;
+	}
+	&:nth-child(1n + 1) {
+		@media (max-width: $minWidthSml) {
+			grid-area: auto;
+		}
 	}
 }
