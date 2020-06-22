@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap');
+
 //- //< Sassy settings
 $minWidthLg: 1000px;
 $minWidthMed: 800px;
@@ -24,7 +26,12 @@ body {
 	height: 100%;
 	min-height: 100%;
 	margin: 0;
+	font-size: 18px;
+	font-family: 'Lato', sans-serif;
 	background: no-repeat linear-gradient(white, var(--color));
+	@media (max-width: $minWidthMed) {
+		font-size: 15px;
+	}
 }
 
 a {
@@ -38,31 +45,53 @@ img {
 }
 
 ul {
+	margin: 0;
+	padding: 0;
 	list-style: none;
 }
 
 h1 {
 	margin: 0;
 	font-size: 4rem;
+	line-height: 0.85em;
 }
 
 h2 {
 	font-size: 2rem;
+	line-height: 1em;
 }
 
 h1,
 h2 {
+	font-family: 'Raleway', sans-serif;
 	span {
 		color: var(--color2);
 	}
 }
 
 p {
-	max-width: 76ch;
+	max-width: 66ch;
+	line-height: 1.25em;
 }
 
 ::placeholder {
 	color: var(--color);
+}
+
+input,
+select {
+	width: 18ch;
+	min-height: 1.5rem;
+	border: none;
+	border-bottom: 2px solid var(--color2);
+	outline: transparent;
+}
+
+label {
+	display: block;
+	color: var(--color2);
+	font-size: 1rem;
+	font-weight: lighter;
 }
 
 .wrap {
@@ -88,7 +117,6 @@ p {
 	align-content: center;
 	&-hero {
 		@extend .grid;
-		//grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		grid-template-columns: 3fr 1fr 1fr;
 		grid-template-rows: auto;
 	}
@@ -100,8 +128,44 @@ p {
 	align-items: center;
 }
 
+header li,
+select,
+input[type='date'],
+.btn {
+	cursor: pointer;
+}
+
+.btn {
+	padding: 0.5rem 1rem;
+	position: relative;
+	font-weight: bolder;
+	text-transform: uppercase;
+	background: transparent;
+	border: 2px solid transparent;
+	transition: color 0.55s;
+	&:hover {
+		color: var(--color);
+	}
+	&::before {
+		content: '';
+		width: 35%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: var(--color2);
+		border-radius: 0.25rem;
+		z-index: -1;
+		transition: width 0.35s;
+	}
+	&:hover::before {
+		width: 100%;
+	}
+}
+
 .img {
 	&-client {
+		margin: 1rem 0;
 		border-radius: 999px;
 	}
 }
@@ -117,9 +181,43 @@ header {
 	}
 }
 
-.navMain,
-.navSecondary {
+.navMain {
 	li {
+		position: relative;
+		padding: 1em;
+		display: inline-block;
+		text-align: center;
+		transition: color 0.55s;
+		&:hover {
+			color: var(--color);
+		}
+		&::before {
+			content: '';
+			width: 5%;
+			height: 50%;
+			position: absolute;
+			top: 25%;
+			left: 0;
+			background: var(--color2);
+			//border-radius: 0.25rem;
+			z-index: -1;
+			transition: width 0.35s;
+		}
+		&:hover::before {
+			width: 100%;
+		}
+		@media (max-width: $minWidthMed) {
+			display: block;
+		}
+	}
+}
+
+.navSecondary {
+	i {
+		color: var(--color2);
+	}
+	li {
+		position: relative;
 		padding: 1em;
 		display: inline-block;
 		text-align: center;
@@ -163,17 +261,22 @@ header {
 		align-self: end;
 	}
 	&-form {
-		padding: 2rem;
+		padding: 1rem;
 		grid-column: 1 / span 2;
 		grid-row: 2/3;
 		align-self: center;
 		background: white;
 		z-index: 99;
-		label {
-			display: block;
+		@media (max-width: $minWidthSml) {
+			width: max-content;
+			grid-column: 1/2;
 		}
 		.input {
+			margin: 0.5rem;
 			display: inline-block;
+			@media (max-width: $minWidthSml) {
+				display: block;
+			}
 		}
 	}
 	&-img {
@@ -188,11 +291,17 @@ header {
 		@media (max-width: $minWidthSml) {
 			grid-column: 1/4;
 			grid-row: 2 / 3;
-			min-height: 300px;
+			min-height: 600px;
 		}
 	}
 	&-cta {
+		position: relative;
+		margin-top: 1rem;
 		grid-area: 3/1/4/4;
+		i {
+			margin-left: 1rem;
+			font-size: 1rem;
+		}
 	}
 }
 

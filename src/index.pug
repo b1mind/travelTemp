@@ -14,17 +14,21 @@ html(lang="en")
 	body
 		header
 			.wrap-header.flex
-				h2 LostBasecamp
+				h2 
+					span Lost
+					|Basecamp
 				nav
 					ul.navMain.hidden
-						li item1
-						li item2
-						li item3
-						li item4
+						li Trips
+						li Packages
+						li Explore
+						li About
 
 				ul.navSecondary.hidden
-					li Contact
-					li Search
+					li 
+						i.fas.fa-envelope
+					li 
+						i.fas.fa-search
 			ul.canHazBurger
 				li
 				li
@@ -41,7 +45,10 @@ html(lang="en")
 				form.hero-form(action="")
 					.input
 						label(name="location") Location
-						input(type="text" name="location" placeholder="Location")
+						select(name="location" placeholder="Location")
+							option(value="test") Test
+							option(value="test") Test
+							option(value="test") Test
 					.input
 						label(name="type") Type
 						input(type="text" name="type" placeholder="Type")
@@ -51,11 +58,12 @@ html(lang="en")
 					.input
 						label(name="type") End Date
 						input(type="date" placeholder="End Date")
-					button.btn Submit
+					.input
+						button.btn Submit
 				img.hero-img(src="https://picsum.photos/450/600?random=", alt="heroImage")
 				.hero-cta
-					i.fas.fa-circle 
-					button.btn Learn more.
+					button.btn Learn more
+						i.fas.fa-question-circle 
 
 		main
 			.wrap.flex
