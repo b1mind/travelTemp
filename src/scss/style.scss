@@ -72,6 +72,9 @@ p {
 		max-width: 1199px;
 		margin: 0 auto;
 	}
+	@media (max-width: $minWidthMed) {
+		padding: 0 1rem;
+	}
 }
 
 .center {
@@ -87,7 +90,7 @@ p {
 		@extend .grid;
 		//grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		grid-template-columns: 3fr 1fr 1fr;
-		grid-template-rows: 2fr 1fr 1fr;
+		grid-template-rows: auto;
 	}
 }
 
@@ -108,6 +111,9 @@ header {
 	z-index: 420;
 	.flex {
 		justify-content: space-between;
+		@media (max-width: $minWidthMed) {
+			display: block;
+		}
 	}
 }
 
@@ -116,6 +122,38 @@ header {
 	li {
 		padding: 1em;
 		display: inline-block;
+		text-align: center;
+		@media (max-width: $minWidthMed) {
+			display: block;
+		}
+	}
+}
+
+.hidden {
+	display: inline-block;
+	visibility: visible;
+	@media (max-width: $minWidthMed) {
+		visibility: hidden;
+		display: none;
+	}
+}
+
+.canHazBurger {
+	display: none;
+	gap: 3px;
+	justify-content: center;
+	visibility: hidden;
+	@media (max-width: $minWidthMed) {
+		display: grid;
+		visibility: visible;
+		position: absolute;
+		top: 0px;
+		right: 10px;
+		li {
+			width: 25px;
+			height: 3px;
+			background: var(--color2);
+		}
 	}
 }
 
@@ -147,9 +185,14 @@ header {
 		border-radius: 0.25rem 2rem 2rem 2rem;
 		overflow: hidden;
 		z-index: 0;
+		@media (max-width: $minWidthSml) {
+			grid-column: 1/4;
+			grid-row: 2 / 3;
+			min-height: 300px;
+		}
 	}
 	&-cta {
-		//-align-self: center;
+		grid-area: 3/1/4/4;
 	}
 }
 
@@ -166,7 +209,9 @@ header {
 }
 
 main,
-.testimonials {
+.testimonials,
+.choose,
+.explore {
 	@media (max-width: $minWidthMed) {
 		.flex {
 			flex-wrap: wrap;
@@ -174,8 +219,12 @@ main,
 	}
 }
 
+main,
+section {
+}
+
 .counts {
-	width: 50%;
+	width: 100%;
 	min-width: 320px;
 	padding: 1rem;
 	display: grid;
@@ -194,8 +243,12 @@ main,
 	justify-self: left;
 }
 
+.box {
+	margin: 0 0.5rem;
+}
+
+.testimonials,
 .experts {
-	text-align: center;
 	p {
 		margin: 1rem auto;
 	}
