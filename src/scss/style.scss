@@ -29,7 +29,7 @@ body {
 	margin: 0;
 	font-size: 18px;
 	font-family: 'Lato', sans-serif;
-	background: no-repeat linear-gradient(white, var(--color));
+	//background: no-repeat linear-gradient(white, var(--color));
 	@media (max-width: $minWidthMed) {
 		font-size: 15px;
 	}
@@ -402,8 +402,8 @@ section {
 		position: absolute;
 		bottom: -20px;
 		right: 0;
-		background: linear-gradient(var(--colorDark), var(--color));
-		border-radius: 2rem 0 0 1rem;
+		background: var(--color);
+		border-radius: 2rem 0 0 0.5rem;
 		z-index: -1;
 	}
 }
